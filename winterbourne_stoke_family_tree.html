@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Winterbourne Stoke Family Tree</title>
+
+  
+  <script type="text/javascript" src="primitives.js"></script>
+  <link href="css/primitives.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <script type='text/javascript'>
+    var control;
+    document.addEventListener('DOMContentLoaded', function () {
+      var options = new primitives.FamConfig();
+
+      var items = [
+        { id: 1, name: "Ser Gwinas", parents: [], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Gwinas" },
+        { id: 2, name: "Ser Ebel", parents: [1], spouses: [3], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ebel" },
+        { id: 3, name: "Lady Enide", parents: [], spouses: [2], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Enide" },
+        { id: 4, name: "Ser Maurel", parents: [2,3], spouses: [7], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Maurel" },
+        { id: 5, name: "Ser Moris", parents: [2,3], spouses: [8], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Moris" },
+        { id: 6, name: "Ser Tanree", parents: [20, 21], spouses: [6], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ser_Tanree_of_Winterbourne_Stoke" },
+        { id: 7, name: "Lady Aenailes", parents: [16], spouses: [4], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Aenailes" },
+        { id: 8, name: "Lady Ava", parents: [], spouses: [5], crest: null, link: null },
+        { id: 9, name: "Ser Gerin", parents: [5, 8], spouses: [25], crest: "images/heraldry_excalibur_gerin.png", link: "https://pendragon-heritage.fandom.com/wiki/Gerin" },
+        { id: 10, name: "Ser Tanaerel", parents: [4, 6], spouses: [41], crest: "images/heraldry_excalibur_tanaerel.png", link: "https://pendragon-heritage.fandom.com/wiki/Tanaerel" },
+        { id: 11, name: "Ser Mailes", parents: [4, 7], spouses: [14], crest: "images/heraldry_excalibur_mailes.png", link: "https://pendragon-heritage.fandom.com/wiki/Ser_Mailes_of_Winterbourne_Stoke" },
+        { id: 12, name: "Aema", parents: [4, 7], spouses: [32], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/" },
+        { id: 13, name: "Aerel", parents: [4, 7], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/" },
+        { id: 14, name: "Ceri", parents: [29, 30], spouses: [11], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ceri" },
+        { id: 15, name: "Ceile", parents: [11, 14], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ceile" },
+        { id: 16, name: "Aelflaed", parents: [], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Aelflaed" },
+        { id: 17, name: "Aelfric", parents: [16], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Aelfric" },
+        { id: 18, name: "Morgan", parents: [17], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Morgan" },
+        { id: 19, name: "Sofie", parents: [17], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Sofie" },
+        { id: 20, name: "Cedig", parents: [], spouses: [], crest: null, link: null },
+        { id: 21, name: "Elin", parents: [], spouses: [], crest: null, link: null },
+        { id: 22, name: "Tagan", parents: [20, 21], spouses: [], crest: null, link: null },
+        { id: 23, name: "Talaith", parents: [20, 21], spouses: [], crest: null, link: null },
+        { id: 24, name: "Aeddan", parents: [], spouses: [6], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Aeddan" },
+        { id: 25, name: "Rhonia O'Quinn", parents: [27, 28], spouses: [9], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Rhonia" },
+        { id: 26, name: "Reichart O'Quinn", parents: [27, 28], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Reichart_O'Quinn" },
+        { id: 27, name: "Ceallach O'Quinn", parents: [], spouses: [28], crest: null, link: null },
+        { id: 28, name: "Eilís O'Quinn", parents: [], spouses: [27], crest: null, link: null },
+        { id: 29, name: "Lady Yina", parents: [], spouses: [30], crest: null, link: null },
+        { id: 30, name: "Lady Helen", parents: [], spouses: [29], crest: null, link: null },
+        { id: 31, name: "Ser Tilly", parents: [29, 30], spouses: [], crest: null, link: null },
+        { id: 32, name: "Anwyn", parents: [33, 34], spouses: [12], crest: null, link: null },
+        { id: 33, name: "Ser Eckert of Linden", parents: [], spouses: [34], crest: null, link: null },
+        { id: 34, name: "Bébinn O'Quinn", parents: [], spouses: [33], crest: null, link: null },
+        { id: 35, name: "Ser Daelen", parents: [33, 34], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Daelen_of_Berwick" },
+        { id: 36, name: "Ser Olan", parents: [33, 34], spouses: [], crest: "images/heraldry_excalibur_olan.png", link: "https://pendragon-heritage.fandom.com/wiki/Olan_of_Linden" },
+        { id: 37, name: "Ser Fhionna", parents: [33, 34], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Fhionna" },
+        { id: 38, name: "Roland", parents: [33, 34], spouses: [], crest: null, link: null },
+        { id: 39, name: "Ruitha", parents: [33, 34], spouses: [], crest: null, link: null },
+        { id: 40, name: "Duncan", parents: [33, 34], spouses: [], crest: null, link: null },
+        { id: 41, name: "Ser Florie", parents: [42, 43], spouses: [10], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ser_Florie" },
+        { id: 42, name: "Ser Havgan", parents: [], spouses: [43], crest: null, link: null },
+        { id: 43, name: "Lady Alwena", parents: [], spouses: [42, 46], crest: null, link: null },
+        { id: 44, name: "Brys", parents: [42, 43], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Brys" },
+        { id: 45, name: "Ser Cadlew", parents: [42, 43], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ser_Cadlew" },
+        { id: 46, name: "Ser Phelot", parents: [], spouses: [43], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Ser_Phelot" },
+        { id: 47, name: "Ser Donovan", parents: [43, 46], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Donovan" },
+        { id: 48, name: "Ser Phloridas", parents: [43, 46], spouses: [], crest: "images/heraldry_excalibur_phloridas.png", link: "https://pendragon-heritage.fandom.com/wiki/Ser_Phloridas" },
+        { id: 49, name: "Ser Vess", parents: [], spouses: [48], crest: "images/heraldry_excalibur_vess.png", link: "https://pendragon-heritage.fandom.com/wiki/Vess_of_Laverstock" },
+        { id: 50, name: "Devon", parents: [35], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/Devon_of_Berwick" },
+        { id: 51, name: "Anh", parents: [49, 48], spouses: [], crest: null, link: null },
+        //{ id: , name: "", parents: [], spouses: [], crest: null, link: null }
+        //{ id: , name: "", parents: [], spouses: [], crest: null, link: "https://pendragon-heritage.fandom.com/wiki/" }
+      ];
+
+      options.pageFitMode = primitives.PageFitMode.AutoSize;
+      options.autoSizeMinimum = new primitives.Size(100, 100);
+      options.autoSizeMaximum = new primitives.Size(1500, 2500);
+      options.items = items;
+      //options.cursorItem = 2;
+      options.linesWidth = 1;
+      options.linesColor = "black";
+      options.hasSelectorCheckbox = primitives.Enabled.False;
+      options.normalLevelShift = 20;
+      options.dotLevelShift = 20;
+      options.lineLevelShift = 20;
+      options.normalItemsInterval = 10;
+      options.dotItemsInterval = 10;
+      options.lineItemsInterval = 10;
+      //options.arrowsDirection = primitives.GroupByType.Parents;
+      options.showExtraArrows = false;
+      options.defaultTemplateName = "info";
+      options.templates = [getInfoTemplate()];
+      options.onItemRender = onTemplateRender;
+
+      control = primitives.FamDiagram(document.getElementById("basicdiagram"), options);
+    });
+
+    function onTemplateRender(event, data) {
+      switch (data.renderingMode) {
+        case primitives.RenderingMode.Create:
+          /* Initialize widgets here */
+          break;
+        case primitives.RenderingMode.Update:
+          /* Update widgets here */
+          break;
+      }
+
+      var itemConfig = data.context;
+
+      if (data.templateName == "info") {
+        var title = data.element.firstChild.firstChild;
+        title.textContent = itemConfig.name;
+        if(itemConfig.link != null){
+          title.href = itemConfig.link;
+        }
+        var photo = data.element.childNodes[1].firstChild;
+        if(itemConfig.crest != null){
+        photo.src = itemConfig.crest;
+        }
+        else{photo.style.visibility = 'hidden'}
+      }
+    }
+
+    function getInfoTemplate() {
+      var result = new primitives.TemplateConfig();
+      result.name = "info";
+
+      result.itemSize = new primitives.Size(80, 100);
+      result.minimizedItemSize = new primitives.Size(3, 3);
+      result.highlightPadding = new primitives.Thickness(4, 4, 4, 4);
+
+      result.itemTemplate =
+      ["div",
+					{
+						"style": {
+							"width": result.itemSize.width + "px",
+							"height": result.itemSize.height + "px"
+						},
+						"class": ["bp-item", "bp-corner-all", "bt-item-frame"]
+					},
+          ["div",
+              {
+                  "name": "name",
+                  "class": ["bp-item"],
+                  "style": {
+                      top: "3px",
+                      left: "6px",
+                      width: "68px",
+                      height: "28px",
+                      fontSize: "12px",
+                      textAlign: "center"
+                  }
+              },
+              ["a",
+                  {
+                      "class": ["bp-item"],
+                      "style": {
+                          display: "block",
+                          height: "100%",
+                          textAlign: "center",
+                          fontColor: "black"
+                      }
+                  }
+              ]
+          ],
+					["div",
+						{
+							"class": ["bp-item"],
+							"style": {
+								top: "31px",
+								left: "8px",
+								width: "60px",
+                                height: "60px",
+							}
+						},
+						["img",
+							{
+								"name": "crest",
+								"class": ["bp-item"],
+								"style": {
+									width: "60px",
+									height: "60px"
+                                }
+							}
+						]
+					],
+					["div",
+						{
+							"name": "phone",
+							"class": "bp-item",
+							"style": {
+								top: "26px",
+								left: "56px",
+								width: "162px",
+								height: "18px",
+								fontSize: "12px"
+							}
+						}
+					],
+					["div",
+						{
+							"name": "email",
+							"class": "bp-item",
+							"style": {
+								top: "44px",
+								left: "56px",
+								width: "162px",
+								height: "18px",
+								fontSize: "12px"
+							}
+						}
+					],
+					["div",
+						{
+							"name": "description",
+							"class": "bp-item",
+							"style": {
+								top: "62px",
+								left: "56px",
+								width: "162px",
+								height: "36px",
+								fontSize: "12px"
+							}
+						}
+					]
+				];
+        //'<div class="bp-item bp-corner-all bt-item-frame" style="width:' + result.itemSize.width + 'px; height: ' + result.itemSize.height + 'px;">'
+        //+ '<div name="title" class="bp-item" style="top: 3px; left: 6px; width: 68px; height: 28px; font-size: 12px;">'
+        //+ '</div>'
+        //+ '</div>';
+
+      return result;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="basicdiagram" style="border-style: dotted; border-width: 1px;"></div>
+</body>
+
+</html>
